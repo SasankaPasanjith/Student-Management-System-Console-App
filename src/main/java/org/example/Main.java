@@ -14,6 +14,7 @@ public class Main {
             System.out.println("1. Add Student");
             System.out.println("2. Display Student");
             System.out.println("3. Delete Student");
+            System.out.println("4. Update Student");
             System.out.println("Enter your choice: ");
 
             int choice = input.nextInt();
@@ -41,7 +42,7 @@ public class Main {
                 arrSub2 = extendAddInteger(arrSub2, sub2);
                 arrSub3 = extendAddInteger(arrSub3, sub3);
             }
-            if (choice == 2) {
+            if (choice == 2) {                        //Display Student
                 System.out.println("Enter Student ID: ");
                 input.nextLine();
                 String id = input.nextLine();
@@ -61,7 +62,7 @@ public class Main {
                     System.out.println("Student not found");
                 }
             }
-            if (choice == 3){
+            if (choice == 3){                            //Delete Student
                     System.out.println("Enter Student ID: ");
                     input.nextLine();
                     String Id = input.nextLine();
@@ -75,8 +76,35 @@ public class Main {
                     }else {
                         System.out.println("Student Not Found");
                     }
-
                 }
+            if (choice == 4){                            //Update Student
+                System.out.println("Enter Student ID: ");
+                input.nextLine();
+                String Id = input.nextLine();
+                int index = findIndexById(arrId,Id);
+                if (index != -1) {
+                    System.out.println("Name: " + arrName[index]);
+                    System.out.println("subject 1 Marks: " + arrSub1[index]);
+                    System.out.println("subject 2 Marks: " + arrSub2[index]);
+                    System.out.println("subject 3 Marks: " + arrSub3[index]);
+
+                    System.out.println("Enter Student Name: ");
+                    String name = input.nextLine();
+                    System.out.println("Enter marks in subject 1: ");
+                    int sub1M = input.nextInt();
+                    System.out.println("Enter marks in subject 2: ");
+                    int sub2M = input.nextInt();
+                    System.out.println("Enter marks in subject 3: ");
+                    int sub3M = input.nextInt();
+                    arrName[index] = name;
+                    arrSub1[index] = sub1M;
+                    arrSub2[index] = sub2M;
+                    arrSub3[index] = sub3M;
+                    System.out.println("Student Updated Successfully");
+                }else {
+                    System.out.println("Student Not Found");
+                }
+            }
             }
         }
     public static int[] extendAddInteger (int[] oldArray, int value) {
