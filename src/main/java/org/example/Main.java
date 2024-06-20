@@ -13,6 +13,7 @@ public class Main {
         while (true) {
             System.out.println("1. Add Student");
             System.out.println("2. Display Student");
+            System.out.println("3. Delete Student");
             System.out.println("Enter your choice: ");
 
             int choice = input.nextInt();
@@ -40,7 +41,7 @@ public class Main {
                 arrSub2 = extendAddInteger(arrSub2, sub2);
                 arrSub3 = extendAddInteger(arrSub3, sub3);
             }
-            if (choice == 2){
+            if (choice == 2) {
                 System.out.println("Enter Student ID: ");
                 input.nextLine();
                 String id = input.nextLine();
@@ -51,17 +52,33 @@ public class Main {
                     int sub2 = arrSub2[index];
                     int sub3 = arrSub3[index];
                     System.out.println("*------------------*----------------------*");
-                    System.out.printf("| Name             | %-30s |\n",name);
-                    System.out.printf("| subject 1 Marks  | %-20d |\n",sub1);
-                    System.out.printf("| subject 2 Marks  | %-20d |\n",sub2);
-                    System.out.printf("| subject 3 Marks  | %-20d |\n",sub3);
+                    System.out.printf("| Name             | %-30s |\n", name);
+                    System.out.printf("| subject 1 Marks  | %-20d |\n", sub1);
+                    System.out.printf("| subject 2 Marks  | %-20d |\n", sub2);
+                    System.out.printf("| subject 3 Marks  | %-20d |\n", sub3);
                     System.out.println("*------------------*----------------------*");
-                }else {
+                } else {
                     System.out.println("Student not found");
                 }
             }
+            if (choice == 3){
+                    System.out.println("Enter Student ID: ");
+                    input.nextLine();
+                    String Id = input.nextLine();
+                    int index = findIndexById(arrId, Id);
+                    if (index != -1) {
+                        arrId = removeStringElementByIndex(arrId, index);
+                        arrName = removeStringElementByIndex(arrName, index);
+                        arrSub1 = removeIntElementByIndex(arrSub1, index);
+                        arrSub2 = removeIntElementByIndex(arrSub2, index);
+                        arrSub3 = removeIntElementByIndex(arrSub3, index);
+                    }else {
+                        System.out.println("Student Not Found");
+                    }
+
+                }
+            }
         }
-    }
     public static int[] extendAddInteger (int[] oldArray, int value) {
         int [] temp = new int[oldArray.length + 1];
         for (int i = 0; i<oldArray.length; i++) {
@@ -86,5 +103,27 @@ public class Main {
             }
         }
         return -1;
+    }
+
+    public static int[] removeIntElementByIndex(int[] oldArray, int index) {
+        int[] temp = new int[oldArray.length - 1];
+        int j = 0;
+        for (int i = 0; i < oldArray.length; i++) {
+            if (index != i) {
+                temp[j++] = oldArray[i];
+            }
+        }
+        return temp;
+    }
+
+    public static String[] removeStringElementByIndex(String[] oldArray, int index) {
+        String[] temp = new String[oldArray.length - 1];
+        int j = 0;
+        for (int i = 0; i < oldArray.length; i++) {
+            if (index != i) {
+                temp[j++] = oldArray[i];
+            }
+        }
+        return temp;
     }
 }
