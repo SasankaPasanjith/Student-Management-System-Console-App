@@ -15,6 +15,7 @@ public class Main {
             System.out.println("2. Display Student");
             System.out.println("3. Delete Student");
             System.out.println("4. Update Student");
+            System.out.println("5. Exit");
             System.out.println("Enter your choice: ");
 
             int choice = input.nextInt();
@@ -104,6 +105,9 @@ public class Main {
                 }else {
                     System.out.println("Student Not Found");
                 }
+            }
+            if (choice == 5) {    //Exit
+                break;
             }
             }
         }
